@@ -1,8 +1,4 @@
-use std::{
-    collections::VecDeque,
-    fmt::Debug,
-    fs::File,
-};
+use std::{collections::VecDeque, fmt::Debug, fs::File};
 
 use serde::{Deserialize, Serialize};
 
@@ -40,9 +36,6 @@ pub enum Compression {
     Lz4,
     /// Deflate, mostly known from gzip.
     Deflate(CompressionLevel),
-    /// Provide your own compression algortihm by implementing
-    /// `Compress`.
-    Custom(Box<dyn CompressBoxedClone>),
 }
 
 impl Clone for Compression {
@@ -50,7 +43,6 @@ impl Clone for Compression {
         match &self {
             Self::Lz4 => Self::Lz4,
             Self::Deflate(n) => Self::Deflate(*n),
-            Self::Custom(x) => Self::Custom(x.boxed_clone()),
         }
     }
 }

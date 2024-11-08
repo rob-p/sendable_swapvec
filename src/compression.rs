@@ -52,7 +52,7 @@ impl Compress for Option<Compression> {
                 };
                 miniz_oxide::deflate::compress_to_vec(&block, compression_level)
             }
-            Some(Compression::Custom(algo)) => algo.compress(block),
+            //Some(Compression::Custom(algo)) => algo.compress(block),
             None => block,
         }
     }
@@ -62,7 +62,7 @@ impl Compress for Option<Compression> {
             Some(Compression::Deflate(_)) => {
                 miniz_oxide::inflate::decompress_to_vec(&block).map_err(|_| ())
             }
-            Some(Compression::Custom(algo)) => algo.decompress(block),
+            //Some(Compression::Custom(algo)) => algo.decompress(block),
             None => Ok(block),
         }
     }
