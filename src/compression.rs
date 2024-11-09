@@ -73,7 +73,7 @@ impl Compress for Option<Compression> {
 /// configuration debugable and clonable.
 pub trait CompressBoxedClone: Compress + std::fmt::Debug {
     /// Clone your empty struct and return it as a new Box.
-    fn boxed_clone(&self) -> Box<dyn CompressBoxedClone>;
+    fn boxed_clone(&self) -> Box<dyn CompressBoxedClone + Send>;
 }
 
 #[cfg(test)]

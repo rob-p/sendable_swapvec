@@ -13,7 +13,7 @@ impl Compress for MyCompression {
 }
 
 impl CompressBoxedClone for MyCompression {
-    fn boxed_clone(&self) -> Box<dyn CompressBoxedClone> {
+    fn boxed_clone(&self) -> Box<dyn CompressBoxedClone + Send> {
         Box::new(MyCompression)
     }
 }
