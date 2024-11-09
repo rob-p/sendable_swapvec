@@ -1,8 +1,4 @@
-use std::{
-    collections::VecDeque,
-    fmt::Debug,
-    fs::File,
-};
+use std::{collections::VecDeque, fmt::Debug, fs::File};
 
 use serde::{Deserialize, Serialize};
 
@@ -42,7 +38,7 @@ pub enum Compression {
     Deflate(CompressionLevel),
     /// Provide your own compression algortihm by implementing
     /// `Compress`.
-    Custom(Box<dyn CompressBoxedClone>),
+    Custom(Box<dyn CompressBoxedClone + Send>),
 }
 
 impl Clone for Compression {

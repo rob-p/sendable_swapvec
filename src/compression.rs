@@ -71,7 +71,7 @@ impl Compress for Option<Compression> {
 /// Your custom compression algorithm struct must be debugable
 /// and clonable. Implement this trait to keep the main
 /// configuration debugable and clonable.
-pub trait CompressBoxedClone: Compress + std::fmt::Debug + Send {
+pub trait CompressBoxedClone: Compress + std::fmt::Debug {
     /// Clone your empty struct and return it as a new Box.
     fn boxed_clone(&self) -> Box<dyn CompressBoxedClone + Send>;
 }
